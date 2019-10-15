@@ -1,0 +1,53 @@
+<br>
+<div class= "offset-md-4 col-md-12">
+    <form (submit)="newSection(SelectCourse,Seccion,HoraI,HoraF)" class="form-group">
+        <!-- Form Name -->
+        <legend>Registrar Nuevo Curso</legend>
+        <br>
+
+        <!--ComboBox-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="email">Proveedor</label> 
+            <div class="col-md-4">
+                <select class="col-md-12 form-control" #SelectCourse>
+                    <option *ngFor = "let Course of Cursos" value={{Course.IDCourse}}>
+                        ID: {{Course.IDCourse}} -- Nombre: {{Course.CourseName}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <br>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label " for="fname">Seccion</label>  
+            <div class="col-md-4"> 
+            <input type="text" placeholder="Nombre de Curso" class="form-control input-md" required="" #Seccion>         
+            </div>
+        </div>
+        
+         <!-- Text input-->
+         <div class="form-group">
+            <label class="col-md-4 control-label " for="fname">Hora de Inicio</label>  
+            <div class="col-md-4"> 
+            <input type="text" placeholder="Ej. 11:00" class="form-control input-md" required="" #HoraI>         
+            </div>
+        </div>
+
+         <!-- Text input-->
+         <div class="form-group">
+            <label class="col-md-4 control-label " for="fname">Hora de Salida</label>  
+            <div class="col-md-4"> 
+            <input type="text" placeholder="Ej. 14:00" class="form-control input-md" required="" #HoraF>         
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <div class="col-md-8">
+            <button class="btn btn-success col-md-2 ">Registrar Seccion</button>
+            </div>
+        </div>
+        
+    </form>
+</div>
