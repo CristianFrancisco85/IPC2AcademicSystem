@@ -19,6 +19,7 @@ export interface CourseInstance {
     "Section" : string;
     "BeginTime" : string;
     "EndTime" : string; 
+    "CourseName" : string;
 }
 
 export interface CourseAsssign {
@@ -27,10 +28,12 @@ export interface CourseAsssign {
     "Semester" : number;
     "YearAssign" : number;
     "IDAux" : number;
+    "CourseName" : string;
 }
 
 export interface StudentAssign {
     "IDUser" : number;
+    "CourseName" : string;
     "IDCourse" : number;
     "Section" : string;
     "Semester" : number;
@@ -74,6 +77,7 @@ export interface ForumPublication {
     "Section" : string;
     "Semester" : number;
     "YearAssign" : number;
+    "UserName": string;
 }
 
 export interface ForumAnswer {
@@ -81,6 +85,7 @@ export interface ForumAnswer {
     "Body" : string;
     "IDUser" : number;
     "IDPublication" : number;
+    "UserName": string;
 }
 
 export interface Message {

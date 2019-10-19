@@ -1,7 +1,7 @@
 <div class="row">
         <div class="panel panel-primary mx-auto">
             <div class="panel-heading">
-                <h3 class="panel-title text-center">Asignacion de Cursos</h3>
+                <h3 class="panel-title text-center">Cursos Asignados</h3>
             </div>
             <table class="table">
                 <thead>
@@ -21,7 +21,7 @@
                         <td #Section>{{Course.Section}}</td>
                         <td #Semester>{{Course.Semester}}</td>
                         <td #Year>{{Course.YearAssign}}</td>
-                        <td><button class="btn btn-success" id={{Course.IDCourse}} (click)="newStudentAssign(Button,Section,Semester,Year)" #Button>Asignarse Curso</button></td>
+                        <td><button class="btn btn-primary" id={{Course.IDCourse}} (click)="viewCourseFlow(Button,Section,Semester,Year)" #Button>Ver Flujo de Curso</button></td>
                     </tr>
                 </tbody>
             </table>

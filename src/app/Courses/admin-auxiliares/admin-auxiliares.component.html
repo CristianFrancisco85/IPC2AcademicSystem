@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="panel panel-primary mx-auto col-md-6">
+        <div class="panel-heading">
+            <h3 class="panel-title text-center">Auxiliares</h3>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>               
+                    <td>ID</td>
+                    <td>Nombre</td>
+                    <td>Username</td>
+                    <td>Carnet</td>
+                    <td>Email</td>
+                    <td> </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let Auxiliar of Auxiliares">          
+                    <td>{{Auxiliar.IDUser}}</td>
+                    <td>{{Auxiliar.FullName}}</td>
+                    <td>{{Auxiliar.UserName}}</td>
+                    <td>{{Auxiliar.Carnet}}</td>
+                    <td>{{Auxiliar.Email}}</td>
+                    <td><button class="btn btn-success" id={{Auxiliar.IDUser}} (click)="viewAuxCourse(Button)" #Button>Ver Cursos</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="panel panel-primary mx-auto col-md-6">
+        <div class="panel-heading">
+            <h3 class="panel-title text-center">Cursos a Cargo</h3>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>               
+                    <td>ID</td>
+                    <td>Nombre de Curso</td>
+                    <td>Seccion</td>
+                    <td>Semestre</td>
+                    <td>Año</td>
+                    <td> </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let Course of Cursos">      
+                    <ng-container *ngIf="Course.IDAux == IDAuxActual"> 
+                    <td>{{Course.IDCourse}}</td>
+                    <td>{{Course.CourseName}}</td>
+                    <td #Section>{{Course.Section}}</td>
+                    <td #Semester>{{Course.Semester}}</td>
+                    <td #Year>{{Course.YearAssign}}</td>
+                    <td><button class="btn btn-warning" id={{Course.IDCourse}} (click)="deleteCourseAssignAux(Button,Section,Semester,Year)" #Button>Desasignar</button></td>
+                    </ng-container>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

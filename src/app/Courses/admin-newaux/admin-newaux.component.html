@@ -1,0 +1,55 @@
+<br>
+<div class=" offset-md-4 col-md-12">
+<form (submit)="RegisterAux(Nombres,UserName,Carnet,Email,Contrasena)" class="form-group">
+    <!-- Form Name -->
+    <legend>Registrar Nuevo Auxiliar</legend>
+    
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label " for="fname">Nombre Completo</label>  
+        <div class="col-md-4"> 
+        <input type="text" placeholder="Nombres" class="form-control input-md" required="" #Nombres>         
+        </div>
+    </div>
+  
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="email">Nombre de Usuario</label>  
+        <div class="col-md-4">
+        <input type="text" placeholder="Ej. Estudiante01 " class="form-control input-md" required="" #UserName> 
+        </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="email">Identificacion</label>  
+        <div class="col-md-4">
+        <input type="text" placeholder="2018xxxxx" class="form-control input-md" required="" #Carnet> 
+        </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="email">Email</label>  
+        <div class="col-md-4">
+        <input type="text" placeholder="ejemplo@usac.com" class="form-control input-md" required="" #Email> 
+        </div>
+    </div>
+
+    <!-- Password input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="password">Password</label>
+        <div class="col-md-4">
+        <input type="password" placeholder="" class="form-control input-md" required="" #Contrasena>        
+        </div>
+    </div>
+    
+    <!-- Button (Double) -->
+    <div class="form-group">
+        <div class="col-md-8">
+        <button class="btn btn-success col-md-2 ">Registrar</button>
+        </div>
+    </div>
+
+</form>
+</div>

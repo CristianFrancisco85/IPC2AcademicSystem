@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <button class="btn col-md-2 btn-success offset-md-1 " routerLink="user-newpublication" routerLinkActive="router-link-active"  #Button>Nueva Publicacion</button>
+    </div>
+    <div>
+        <hr>
+        <router-outlet></router-outlet>
+        <hr>
+    </div>
+        <div class="col-md-12" *ngFor = "let Publication of Publicaciones" >
+            <ng-container *ngIf="Publication.IDCourse == IDCourse && Publication.Section == Section && Publication.Semester == Semester && Publication.YearAssign == Year"> 
+                <h3>{{Publication.Title}}</h3>
+                <h6>Por {{Publication.UserName}}</h6>
+                <p>{{Publication.Body}}</p>
+                <br>
+                <div class="row">
+                    <input type="text" placeholder="Escribe Algo..." class="form-control input-md col-md-6" required="" #Respuesta>
+                    <button class="btn col-md-2 btn-warning offset-md-1 " id={{Publication.IDPublication}} (click)="newAnswer(Button,Respuesta)" #Button>Responder</button>
+                </div>
+                <hr>
+                <ng-container *ngFor = "let Answer of Respuestas"> 
+                    <div class="row" *ngIf=" Answer.IDPublication === Publication.IDPublication" >
+                        <h6><b>{{Answer.UserName}} dice: </b> </h6>
+                        <br>
+                        <h6> {{Answer.Body}}</h6>
+                        <hr>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </div>
+</div>

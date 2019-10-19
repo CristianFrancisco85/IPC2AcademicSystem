@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Course } from 'src/app/DataTypes';
+import { CourseInstance, User, CourseActivitie } from 'src/app/DataTypes';
 
 @Component({
   selector: 'app-admin-newassign',
@@ -11,22 +11,30 @@ import { Course } from 'src/app/DataTypes';
 })
 export class AdminNewassignComponent implements OnInit {
 
-  Cursos: Course [];
+  SeccionesCursos: CourseInstance [];
+  Auxiliares : User[];
 
 
   constructor(private dataservice : DataService , private router : Router) { }
 
   ngOnInit() {
-    this.dataservice.getCourses().subscribe( Cursos => this.Cursos = Cursos);
+    this.dataservice.getCourseSections().subscribe( Cursos => this.SeccionesCursos = Cursos);
+    this.dataservice.getAuxiliares().subscribe( Auxiliares => this.Auxiliares = Auxiliares);
   }
 
-  newSection(Curso,Seccion,HoraI,HoraF){
-    this.dataservice.addCourseInstance(Curso.value,Seccion.value,HoraI.value,HoraF.value).subscribe((result) =>{
-        console.log(result);
-        alert("Seccion de Curso Agregada");
+  newSectionAssign(Curso,Semestre,Year,Aux){
+    console.log(Curso);
+    let IDCourse = Curso[Curso.selectedIndex].id;
+
+    this.dataservice.addCourseAssign(IDCourse,Curso.value,Semestre.value,Year.value,Aux.value).subscribe((result) =>{
+      console.log(result);
+      if(result=='0'){
+        alert('ERROR: El curso ya fue asignado anteriormente')
+      }
+      else{
+        alert("Seccion de Curso Asignada para el Semestre "+Semestre.value+" del Año "+Year.value);
+      }
+      
     });
   }
-
-
-
 }

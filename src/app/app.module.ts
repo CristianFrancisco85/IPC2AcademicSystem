@@ -18,6 +18,16 @@ import { UserCourseassignComponent } from './Courses/user-courseassign/user-cour
 import { AdminNewcourseComponent } from './Courses/admin-newcourse/admin-newcourse.component';
 import { AdminNewsectionComponent } from './Courses/admin-newsection/admin-newsection.component';
 import { AdminNewassignComponent } from './Courses/admin-newassign/admin-newassign.component';
+import { UserAssignedcourseComponent } from './Courses/user-assignedcourse/user-assignedcourse.component';
+import { UserCourseflowComponent } from './Courses/user-courseflow/user-courseflow.component';
+import { UserCourseactivitieComponent } from './Courses/user-courseactivitie/user-courseactivitie.component';
+import { UserCourseforumComponent } from './Courses/user-courseforum/user-courseforum.component';
+import { UserCoursequizComponent } from './Courses/user-coursequiz/user-coursequiz.component';
+import { AdminCourselistComponent } from './Courses/admin-courselist/admin-courselist.component';
+import { AdminNewauxComponent } from './Courses/admin-newaux/admin-newaux.component';
+import { AdminNewUserAuxComponent } from './Courses/admin-new-user-aux/admin-new-user-aux.component';
+import { AdminAuxiliaresComponent } from './Courses/admin-auxiliares/admin-auxiliares.component';
+import { UserNewpublicationComponent } from './Courses/user-newpublication/user-newpublication.component';
 
 const Rutas: Routes = [
   {
@@ -33,7 +43,34 @@ const Rutas: Routes = [
     path: 'aux-login', component:LoginAuxComponent
   },
   {
-    path: 'user-module', component:UserModuleComponent
+    path: 'user-module', component:UserModuleComponent,
+    children:[
+      {
+        path: 'user-courseassign', component:UserCourseassignComponent
+      },
+      {
+        path: 'user-assignedcourse', component:UserAssignedcourseComponent
+      },
+      {
+        path: 'user-courseflow', component:UserCourseflowComponent,
+        children:[
+          {
+            path: 'user-courseactivitie', component:UserCourseactivitieComponent
+          },
+          {
+            path: 'user-courseforum', component:UserCourseforumComponent,
+            children:[
+              {
+                path: 'user-newpublication', component:UserNewpublicationComponent
+              }
+            ]
+          },
+          {
+            path: 'user-coursequiz', component:UserCoursequizComponent
+          }
+        ]
+      }
+    ]
   },
   {
     path: 'admin-module', component:AdminModuleComponent,
@@ -46,6 +83,18 @@ const Rutas: Routes = [
       },
       {
         path: 'new-assign', component:AdminNewassignComponent
+      },
+      {
+        path: 'admin-courselist', component:AdminCourselistComponent
+      },
+      {
+        path: 'admin-newAux', component : AdminNewauxComponent
+      },
+      {
+        path: 'admin-newUserAux', component : AdminNewUserAuxComponent
+      },
+      {
+        path: 'admin-aux', component : AdminAuxiliaresComponent
       }
     ]
   },
@@ -70,7 +119,17 @@ const Rutas: Routes = [
     UserCourseassignComponent,
     AdminNewcourseComponent,
     AdminNewsectionComponent,
-    AdminNewassignComponent
+    AdminNewassignComponent,
+    UserAssignedcourseComponent,
+    UserCourseflowComponent,
+    UserCourseactivitieComponent,
+    UserCourseforumComponent,
+    UserCoursequizComponent,
+    AdminCourselistComponent,
+    AdminNewauxComponent,
+    AdminNewUserAuxComponent,
+    AdminAuxiliaresComponent,
+    UserNewpublicationComponent
   ],
   imports: [
     BrowserModule,
