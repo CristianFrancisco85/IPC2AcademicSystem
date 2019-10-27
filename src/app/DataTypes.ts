@@ -29,6 +29,8 @@ export interface CourseAsssign {
     "YearAssign" : number;
     "IDAux" : number;
     "CourseName" : string;
+    "BeginTime" : string;
+    "EndTime" : string; 
 }
 
 export interface StudentAssign {
@@ -51,10 +53,20 @@ export interface CourseActivitie {
     "Points" : number;
 }
 
-export interface StudentGrade {
-    "IDGrade" : number;
+export interface ActivitieAnswer {
     "IDActivitie" : number;
     "IDUser" : number;
+    "Body" : string;
+    "FullName" : string;
+    "Title" : string;
+}
+
+export interface StudentGrade {
+    "IDGrade" : number;
+    "Grade" : number;
+    "IDActivitie" : number;
+    "IDUser" : number;
+    "Title" : string;
 }
 
 export interface Assistance {
@@ -95,6 +107,7 @@ export interface Message {
     "Archivos" : Blob;
     "IDEmisor" : number;
     "IDReceptor" : number;
+    "FullName" : string;
 }
 
 export interface Ticket{
@@ -111,6 +124,8 @@ export interface Quiz{
     "Section" : string;
     "Semester" : number;
     "YearAssign" : number;
+    "Title" : string;
+    "State" : string;
 }
 
 export interface QuizQuestion{

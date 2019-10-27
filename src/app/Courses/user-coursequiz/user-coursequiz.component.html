@@ -1,1 +1,9 @@
-<p>user-coursequiz works!</p>
+<div class="col-md-12" *ngFor = "let Quiz of Evaluaciones" >
+    <hr>
+    <h3>{{Quiz.Title}}</h3>
+    <br>
+    <div class="row">
+        <button class="btn col-md-2 btn-warning offset-md-1 " id={{Quiz.IDQuiz}} (click)="viewQuiz(Button)" #Button>Ver Evaluacion</button>
+    </div>
+    <hr>
+</div>

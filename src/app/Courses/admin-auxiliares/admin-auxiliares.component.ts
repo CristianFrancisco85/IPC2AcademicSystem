@@ -29,10 +29,16 @@ export class AdminAuxiliaresComponent implements OnInit {
   deleteCourseAssignAux(Curso,Seccion,Semestre,Year){
     Semestre = parseInt(Semestre.textContent);
     Year = parseInt(Year.textContent);
-    this.dataservice.deleteCourseAssignAux(Curso.id,Seccion.textContent,Semestre,Year).subscribe((result) =>{
+    let pregunta = prompt("¿Porque quiere desasignar al auxiliar?","");
+      if (pregunta == null || pregunta == "") {
+        alert("Porfavor ingrese una razon para la desasignacion");     
+      } 
+      else {    
+      this.dataservice.deleteCourseAssignAux(Curso.id,Seccion.textContent,Semestre,Year).subscribe((result) =>{
         alert("La desasignacion ha sido exitosa");  
         this.dataservice.getCourseAssign().subscribe( Cursos => this.Cursos = Cursos);
-    });
+      });
+    }
   }
 
 }

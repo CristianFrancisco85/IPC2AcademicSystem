@@ -6,19 +6,15 @@
         <table class="table">
             <thead>
                 <tr>               
-                    <td>ID</td>
                     <td>Nombre</td>
-                    <td>Username</td>
-                    <td>Carnet</td>
+                    <td>Identificiacion</td>
                     <td>Email</td>
                     <td> </td>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor = "let Auxiliar of Auxiliares">          
-                    <td>{{Auxiliar.IDUser}}</td>
                     <td>{{Auxiliar.FullName}}</td>
-                    <td>{{Auxiliar.UserName}}</td>
                     <td>{{Auxiliar.Carnet}}</td>
                     <td>{{Auxiliar.Email}}</td>
                     <td><button class="btn btn-success" id={{Auxiliar.IDUser}} (click)="viewAuxCourse(Button)" #Button>Ver Cursos</button></td>
@@ -33,22 +29,24 @@
         <table class="table">
             <thead>
                 <tr>               
-                    <td>ID</td>
                     <td>Nombre de Curso</td>
                     <td>Seccion</td>
                     <td>Semestre</td>
                     <td>Año</td>
+                    <td>Hora de Inicio</td>
+                    <td>Hora de Fin </td>
                     <td> </td>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor = "let Course of Cursos">      
                     <ng-container *ngIf="Course.IDAux == IDAuxActual"> 
-                    <td>{{Course.IDCourse}}</td>
                     <td>{{Course.CourseName}}</td>
                     <td #Section>{{Course.Section}}</td>
                     <td #Semester>{{Course.Semester}}</td>
                     <td #Year>{{Course.YearAssign}}</td>
+                    <td>{{Course.BeginTime}}</td>
+                    <td>{{Course.EndTime}}</td>
                     <td><button class="btn btn-warning" id={{Course.IDCourse}} (click)="deleteCourseAssignAux(Button,Section,Semester,Year)" #Button>Desasignar</button></td>
                     </ng-container>
                 </tr>

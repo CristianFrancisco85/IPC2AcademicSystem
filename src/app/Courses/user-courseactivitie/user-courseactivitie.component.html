@@ -1,1 +1,14 @@
-<p>user-courseactivitie works!</p>
+<div class="container">
+    <div class="col-md-12" *ngFor = "let Activitie of Actividades" >
+        <hr>
+        <h3>{{Activitie.Title}}</h3>
+        <h6>{{Activitie.Description}}</h6>
+        <p>Valor: {{Activitie.Points}} Pts.</p>
+        <br>
+        <div class="row">
+            <input type="text" placeholder="Escribe Algo..." class="form-control input-md col-md-6" required="" #Respuesta>
+            <button class="btn col-md-2 btn-warning offset-md-1 " id={{Activitie.IDActivitie}} (click)="newAnswerActivitie(Button,Respuesta)" #Button>Responder</button>
+        </div>
+        <hr>
+    </div>
+</div>

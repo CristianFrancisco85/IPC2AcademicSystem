@@ -1,0 +1,49 @@
+<div class="col-md-12">
+    <form (submit)="newQuestion(Descripcion,Options,Answer)" class="form-group offset-md-4 ">
+        <!-- Form Name -->
+        <legend>Nueva Pregunta</legend>
+        
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label " for="fname">Descripcion</label>  
+            <div class="col-md-4"> 
+            <input type="text" placeholder="" class="form-control input-md" required="" #Descripcion>         
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="email">Opciones de Respuesta (Separados por Coma)</label>  
+            <div class="col-md-4">
+            <input type="text" placeholder="Ej. Verdadero,Falso,NAC" class="form-control input-md" required="" #Options> 
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="email">Respuesta Correcta</label>  
+            <div class="col-md-4">
+            <input type="text" placeholder="" class="form-control input-md" required="" #Answer> 
+            </div>
+        </div>
+        
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <div class="col-md-8">
+            <button class="btn btn-success col-md-4 ">Agregar Pregunta</button>
+            </div>
+        </div>
+    </form>
+    <div class="col-md-12" *ngFor = "let Question of Preguntas" >
+        <hr>
+        <h5>{{Question.Body}}</h5>
+        <h6>Respuesta Correcta: {{Question.Answer}}</h6>
+        <br>
+        <select class="col-md-4 form-control">
+            <option *ngFor = "let QuizAnswer of Question.QOptions|splitAnswer">
+               {{QuizAnswer}}
+            </option>
+        </select>
+        <hr>
+    </div>
+</div>

@@ -12,6 +12,7 @@
                         <td>Semestre</td>
                         <td>Año</td>
                         <td> </td>
+                        <td> </td>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +23,7 @@
                         <td #Semester>{{Course.Semester}}</td>
                         <td #Year>{{Course.YearAssign}}</td>
                         <td><button class="btn btn-primary" id={{Course.IDCourse}} (click)="viewCourseFlow(Button,Section,Semester,Year)" #Button>Ver Flujo de Curso</button></td>
+                        <td><button class="btn btn-danger" id={{Course.IDCourse}} (click)="deleteAssign(Button,Section,Semester,Year)" #Button>Desasignarse Curso</button></td>
                     </tr>
                 </tbody>
             </table>

@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵɵresolveBody } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import {  Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { User,Course,CourseInstance,CourseAsssign,StudentAssign,CourseActivitie,StudentGrade} from './DataTypes'
+import { User,Course,CourseInstance,CourseAsssign,StudentAssign,CourseActivitie,StudentGrade, ActivitieAnswer} from './DataTypes'
 import { Assistance,ForumPublication,ForumAnswer,Message,Ticket,Quiz,QuizQuestion} from './DataTypes'
 import { Title } from '@angular/platform-browser';
+import { stringify } from '@angular/compiler/src/util';
 
 @Injectable({
   providedIn: 'root'
@@ -71,6 +72,12 @@ export class DataService {
     return this.http.post('http://localhost:3000/verifyUsername',{
       username: UserName
     });   
+  }
+
+  getStudentsAux(IDAux:number):Observable<User[]>{
+    return this.http.post<User[]>('http://localhost:3000/getStudentsAux',{
+      idaux :IDAux
+    });  
   }
 
   //---COURSE
@@ -158,6 +165,42 @@ export class DataService {
     });   
   }
 
+  getAuxAssigns(IDUser:number):Observable<StudentAssign[]> {
+    return this.http.post<StudentAssign[]>('http://localhost:3000/getAuxAssign',{
+      iduser: IDUser
+    });   
+  }
+
+  deleteStudentAssign(IDUser:number,IDCourse:number,Section:string,Semester:number,Year:number){
+    return this.http.post('http://localhost:3000/deleteStudentAssign',{
+    iduser :IDUser,
+    idcourse: IDCourse,
+    section: Section,
+    semester: Semester,
+    year: Year
+    });
+  }
+
+  //--STUDENTGRADE 
+
+  newStudentGrade(IDUser:number,IDActivitie:number,Grade:number){
+    return this.http.post('http://localhost:3000/newStudentGrade',{
+      iduser:IDUser,
+      idactivitie : IDActivitie,
+      grade: Grade
+    });
+  }
+
+  getStudentGrades(IDUser:number,IDCourse:number,Section:string,Semester:number,Year:number):Observable<StudentGrade[]> {
+    return this.http.post<StudentGrade[]>('http://localhost:3000/getStudentGrades',{
+      iduser: IDUser,
+      idcourse: IDCourse,
+      section: Section,
+      semester: Semester,
+      year: Year
+    });   
+  }
+
   //--FORUMPUBLICATIONS
 
   getForumPublications(): Observable<ForumPublication[]> { 
@@ -189,5 +232,144 @@ export class DataService {
       idpublication:IDPublication
     });
   }
+
+  //--MESSAGE 
+  newMessage(Asunto:string,Cuerpo:string,IDEmisor:number,IDReceptor:number,Archivos){
+    return this.http.post('http://localhost:3000/newMessage',{
+      asunto:Asunto,
+      cuerpo:Cuerpo,
+      idemisor:IDEmisor,
+      idreceptor:IDReceptor,
+      archivos:Archivos
+    });
+  }
+
+  getUserMessage(IDUser:number):Observable<Message[]>{
+    return this.http.post<Message[]>('http://localhost:3000/getUserMessage',{
+      iduser:IDUser
+    });
+  }
+
+  //--TICKET
+
+  getUserTicket(IDUser:number):Observable<Ticket[]>{
+    return this.http.post<Ticket[]>('http://localhost:3000/getUserTicket',{
+      iduser:IDUser
+    });
+  }
+
+  newUserTicket(Asunto:string,Cuerpo:string,IDUser:number){
+    return this.http.post('http://localhost:3000/newUserTicket',{
+      iduser:IDUser,
+      asunto:Asunto,
+      cuerpo:Cuerpo
+    });
+  }
+
+  updateUserTicket(IDTicket:number,Estado:string){
+    return this.http.post('http://localhost:3000/updateUserTicket',{
+      idticket:IDTicket,
+      estado:Estado
+    });
+  }
+
+  getTickets(): Observable<Ticket[]> { 
+    return this.http.get<Ticket[]>('http://localhost:3000/getTickets');  
+  }
+
+  //--COURSEACTIVITIE
+
+  newActivitie(Title:string,Cuerpo:string,Puntos:number,IDCourse:number,Section:string,Semester:number,Year:number){
+    return this.http.post('http://localhost:3000/newCourseActivitie',{
+      title:Title,
+      body:Cuerpo,
+      points:Puntos,
+      idcourse: IDCourse,
+      section: Section,
+      semester: Semester,
+      year: Year
+    });
+  }
+
+  getActivities(IDCourse:number,Section:string,Semester:number,Year:number):Observable<CourseActivitie[]>{
+    return this.http.post<CourseActivitie[]>('http://localhost:3000/getActivities',{
+      idcourse: IDCourse,
+      section: Section,
+      semester: Semester,
+      year: Year
+    });
+  }
+
+  //--ACTIVITIE ANSWER
+  newActivitieAnswer(IDActivitie:number,IDUser:number,Body:string){
+    return this.http.post('http://localhost:3000/newActivitieAnswer',{
+      idactivitie:IDActivitie,
+      iduser:IDUser,
+      body:Body
+    });
+  }
+
+  getActivitieAnswer(IDCourse:number,Section:string,Semester:number,Year:number):Observable<ActivitieAnswer[]>{
+    return this.http.post<ActivitieAnswer[]>('http://localhost:3000/getActivitieAnswer',{
+      idcourse: IDCourse,
+      section: Section,
+      semester: Semester,
+      year: Year
+    });
+  }
+
+  //--QUIZ
+
+  newCourseQuiz(Title:string,IDCourse:number,Section:string,Semester:number,Year:number){
+    return this.http.post('http://localhost:3000/newCourseQuiz',{
+      idcourse: IDCourse,
+      section: Section,
+      semester: Semester,
+      year: Year,
+      title:Title
+    });
+  }
+
+  getCourseQuiz(IDCourse:number,Section:string,Semester:number,Year:number):Observable<Quiz[]>{
+    return this.http.post<Quiz[]>('http://localhost:3000/getCourseQuiz',{
+      idcourse: IDCourse,
+      section: Section,
+      semester: Semester,
+      year: Year
+    });
+  }
+  getCourseQuizStudent(IDCourse:number,Section:string,Semester:number,Year:number):Observable<Quiz[]>{
+    return this.http.post<Quiz[]>('http://localhost:3000/getCourseQuizStudent',{
+      idcourse: IDCourse,
+      section: Section,
+      semester: Semester,
+      year: Year
+    });
+  }
+
+  updateCourseQuiz(IDQuiz:number,Estado:string){
+    return this.http.post('http://localhost:3000/updateCourseQuiz',{
+      idquiz:IDQuiz,
+      estado:Estado
+    });
+  }
+
+  //--QUIZQUESTION
+
+  newQuizQuestion(IDQuiz:number,Body:string,Answer:string,Opciones:string){
+    return this.http.post('http://localhost:3000/newQuizQuestion',{
+      idquiz:IDQuiz,
+      body : Body,
+      answer : Answer,
+      opciones :Opciones
+    });
+  }
+
+  getQuizQuestion(IDQuiz:number,):Observable<QuizQuestion[]>{
+    return this.http.post<QuizQuestion[]>('http://localhost:3000/getQuizQuestion',{
+      idquiz:IDQuiz
+    });
+  }
+
 
 }

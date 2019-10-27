@@ -27,4 +27,8 @@ export class UserCourseflowComponent implements OnInit {
     this.router.navigate(['user-module/user-courseflow/user-coursequiz']);
   }
 
+  viewGrades(){
+    this.router.navigate(['user-module/user-courseflow/user-coursegrades']);
+  }
+
 }

@@ -28,6 +28,20 @@ import { AdminNewauxComponent } from './Courses/admin-newaux/admin-newaux.compon
 import { AdminNewUserAuxComponent } from './Courses/admin-new-user-aux/admin-new-user-aux.component';
 import { AdminAuxiliaresComponent } from './Courses/admin-auxiliares/admin-auxiliares.component';
 import { UserNewpublicationComponent } from './Courses/user-newpublication/user-newpublication.component';
+import { AuxCourseforumComponent } from './Auxiliar/aux-courseforum/aux-courseforum.component';
+import { AuxAssignedcourseComponent } from './Auxiliar/aux-assignedcourse/aux-assignedcourse.component';
+import { AuxMessagesComponent } from './Auxiliar/aux-messages/aux-messages.component';
+import { AuxCourseflowComponent } from './Auxiliar/aux-courseflow/aux-courseflow.component';
+import { UserMessagesComponent } from './Courses/user-messages/user-messages.component';
+import { UserTicketsComponent } from './Courses/user-tickets/user-tickets.component';
+import { UserNewticketComponent } from './Courses/user-newticket/user-newticket.component';
+import { AdminTicketsComponent } from './Courses/admin-tickets/admin-tickets.component';
+import { AuxCourseactivitieComponent } from './Auxiliar/aux-courseactivitie/aux-courseactivitie.component';
+import { AuxCoursequizComponent } from './Auxiliar/aux-coursequiz/aux-coursequiz.component';
+import { AuxQuizesComponent } from './Auxiliar/aux-quizes/aux-quizes.component';
+import { UserCoursegradesComponent } from './Courses/user-coursegrades/user-coursegrades.component';
+import { SplitAnswerPipe } from './split-answer.pipe';
+import { UserViewquizComponent } from './Courses/user-viewquiz/user-viewquiz.component';
 
 const Rutas: Routes = [
   {
@@ -52,10 +66,24 @@ const Rutas: Routes = [
         path: 'user-assignedcourse', component:UserAssignedcourseComponent
       },
       {
+        path: 'user-messages', component:UserMessagesComponent
+      },
+      {
+        path: 'user-tickets', component:UserTicketsComponent,
+        children:[
+          {
+            path: 'user-newticket', component:UserNewticketComponent
+          }
+        ]
+      },
+      {
         path: 'user-courseflow', component:UserCourseflowComponent,
         children:[
           {
             path: 'user-courseactivitie', component:UserCourseactivitieComponent
+          },
+          {
+            path: 'user-coursegrades', component:UserCoursegradesComponent
           },
           {
             path: 'user-courseforum', component:UserCourseforumComponent,
@@ -67,6 +95,9 @@ const Rutas: Routes = [
           },
           {
             path: 'user-coursequiz', component:UserCoursequizComponent
+          },
+          {
+            path: 'user-viewquiz', component:UserViewquizComponent
           }
         ]
       }
@@ -95,11 +126,44 @@ const Rutas: Routes = [
       },
       {
         path: 'admin-aux', component : AdminAuxiliaresComponent
+      },
+      {
+        path: 'admin-tickets', component : AdminTicketsComponent
       }
     ]
   },
   {
-    path: 'aux-module', component:AuxModuleComponent
+    path: 'aux-module', component:AuxModuleComponent,
+    children:[
+      {
+        path: 'aux-assignedcourse', component:AuxAssignedcourseComponent
+      },
+      {
+        path: 'aux-messages', component:AuxMessagesComponent
+      },
+      {
+        path: 'aux-courseflow', component:AuxCourseflowComponent,
+        children:[
+          {
+            path: 'aux-courseactivitie', component:AuxCourseactivitieComponent
+          },
+          {
+            path: 'aux-coursequiz', component:AuxCoursequizComponent
+          },
+          {
+            path: 'aux-quizes', component:AuxQuizesComponent
+          },
+          {
+            path: 'aux-courseforum', component:AuxCourseforumComponent,
+            children:[
+              {
+                path: 'user-newpublication', component:UserNewpublicationComponent
+              }
+            ]
+          }
+        ]
+      }
+    ]
   },
   {
     path: 'user-register', component:UserRegisterComponent
@@ -129,7 +193,21 @@ const Rutas: Routes = [
     AdminNewauxComponent,
     AdminNewUserAuxComponent,
     AdminAuxiliaresComponent,
-    UserNewpublicationComponent
+    UserNewpublicationComponent,
+    AuxCourseforumComponent,
+    AuxAssignedcourseComponent,
+    AuxMessagesComponent,
+    AuxCourseflowComponent,
+    UserMessagesComponent,
+    UserTicketsComponent,
+    UserNewticketComponent,
+    AdminTicketsComponent,
+    AuxCourseactivitieComponent,
+    AuxCoursequizComponent,
+    AuxQuizesComponent,
+    UserCoursegradesComponent,
+    SplitAnswerPipe,
+    UserViewquizComponent
   ],
   imports: [
     BrowserModule,

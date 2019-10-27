@@ -1,0 +1,54 @@
+<div class="col-md-12">
+        <form (submit)="newActivitie(Title,Descripcion,Puntos)" class="form-group offset-md-4 ">
+            <!-- Form Name -->
+            <legend>Nuevo Actividad</legend>
+            
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label " for="fname">Nombre de Actividad</label>  
+                <div class="col-md-4"> 
+                <input type="text" placeholder="" class="form-control input-md" required="" #Title>         
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="email">Descripcion</label>  
+                <div class="col-md-4">
+                <input type="text" placeholder="Escribe algo... " class="form-control input-md" required="" #Descripcion> 
+                </div>
+            </div>
+    
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="email">Puntos</label>  
+                <div class="col-md-4">
+                <input type="text" placeholder="Ej. 100,10 " class="form-control input-md" required="" #Puntos> 
+                </div>
+            </div>
+            
+            <!-- Button (Double) -->
+            <div class="form-group">
+                <div class="col-md-8">
+                <button class="btn btn-success col-md-2 ">Publicar Actividad</button>
+                </div>
+            </div>
+        </form>
+        
+        <div class="col-md-12" *ngFor = "let ActivitieAnswer of Respuestas" >
+            <hr>
+            <h3>Respuesta a {{ActivitieAnswer.Title}}</h3>
+            <h6>Por: {{ActivitieAnswer.FullName}}</h6>
+            <p>Respuesta: {{ActivitieAnswer.Body}}</p>
+            <hr>
+            <div class="col-md-4">
+                <input type="text" placeholder="Ej. 100,10 " id={{ActivitieAnswer.IDActivitie}} class="form-control input-md" required="" #Nota> 
+            </div>
+            <br>
+            <div class="col-md-8">
+                <button class="btn btn-primary col-md-3" id={{ActivitieAnswer.IDUser}} (click)="setGrade(Nota,Button)" #Button>Asignar Nota</button>
+            </div>
+            <hr>
+        </div>
+
+    </div>

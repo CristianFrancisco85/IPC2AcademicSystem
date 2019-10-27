@@ -1,0 +1,43 @@
+<div class=" col-md-12">
+    <form (submit)="newCourseQuiz(Title)" class="form-group offset-md-4 ">
+        <!-- Form Name -->
+        <legend>Nueva Evaluacion</legend>
+        
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label " for="fname">Nombre de Evaluacion</label>  
+            <div class="col-md-4"> 
+            <input type="text" placeholder="" class="form-control input-md" required="" #Title>         
+            </div>
+        </div>
+        
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <div class="col-md-8">
+            <button class="btn btn-success col-md-4 ">Publicar Evalucacion</button>
+            </div>
+        </div>
+    </form>
+    
+    <hr>
+    <div class="col-md-12" *ngFor = "let Quiz of Evaluaciones" >
+        <hr>
+        <h3>{{Quiz.Title}}</h3>
+        <h6>Habilitada: {{Quiz.State}}</h6>
+        <br>
+        <div class="row">
+            <button class="btn col-md-2 btn-warning offset-md-1 " id={{Quiz.IDQuiz}} (click)="viewQuiz(Button)" #Button>Ver Evaluacion</button>
+        </div>
+        <br>
+        <label class="col-md-4 control-label" for="email">Modificar Estado</label> 
+        <select class="col-md-12 form-control" #Select>
+            <option value="TRUE" id={{Quiz.IDQuiz}}>Habilitada</option>
+            <option value="FALSE" id={{Quiz.IDQuiz}}>Deshabilitada</option>
+        </select>
+        <br>
+        <div class="col-md-8">
+            <button class="btn btn-primary col-md-3" (click)="updateQuiz(Select)" >Actualizar Estado</button>
+        </div>
+        <hr>
+    </div>
+</div>

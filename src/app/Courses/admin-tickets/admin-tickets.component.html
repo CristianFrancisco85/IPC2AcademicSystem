@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="col-md-12" *ngFor = "let Ticket of Tickets" >
+        <hr> 
+        <h4>Asunto: {{Ticket.Asunto}}</h4>
+        <h5>Estado: {{Ticket.Estado}}</h5>
+        <p>{{Ticket.Body}}</p>
+        <label class="col-md-4 control-label" for="email">Modificar Estado</label> 
+        <select class="col-md-12 form-control" #SelectCourse>
+            <option value="Recibido" id={{Ticket.IDTicket}}>Recibido</option>
+            <option value="En Proceso " id={{Ticket.IDTicket}}>En Proceso</option>
+            <option value="Finalizado" id={{Ticket.IDTicket}}>Finalizado</option>
+        </select>
+        <br>
+        <div class="col-md-8">
+            <button class="btn btn-primary col-md-3" (click)="updateTicket(SelectCourse)" >Actualizar Estado</button>
+        </div>
+        <hr>
+    </div>
+</div>

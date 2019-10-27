@@ -1,0 +1,13 @@
+<div class="col-md-12" *ngFor = "let Question of Preguntas" >
+    <hr>
+    <h5>{{Question.Body}}</h5>
+    <br>
+    <select class="col-md-4 form-control" #Answer>
+        <option *ngFor = "let QuizAnswer of Question.QOptions|splitAnswer" [value]="QuizAnswer" >
+            {{QuizAnswer}}
+        </option>
+    </select>
+    <br>
+    <button class="btn col-md-2 btn-success" (click)="verify(Button,Answer)" id={{Question.Answer}} #Button>Validar Respuesta</button>
+    <hr>
+</div>

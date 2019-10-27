@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <button class="btn col-md-2 btn-success  " routerLink="user-newticket" routerLinkActive="router-link-active"  #Button>Nuevo Ticket</button>
+    </div>
+    <div>
+        <hr>
+        <router-outlet></router-outlet>    
+        <hr>  
+    </div>
+    
+    <div class="col-md-12" *ngFor = "let Ticket of Tickets" >
+        <hr> 
+        <h4>Asunto: {{Ticket.Asunto}}</h4>
+        <h5>Estado: {{Ticket.Estado}}</h5>
+        <p>{{Ticket.Body}}</p>
+        <hr>
+    </div>
+</div>

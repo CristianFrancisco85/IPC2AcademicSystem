@@ -1,0 +1,29 @@
+<div class=" offset-md-4 col-md-12">
+    <form (submit)="newTicket(Asunto,Cuerpo)" class="form-group">
+        <!-- Form Name -->
+        <legend>Nuevo Ticket</legend>
+        
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label " for="fname">Asunto</label>  
+            <div class="col-md-4"> 
+            <input type="text" placeholder="" class="form-control input-md" required="" #Asunto>         
+            </div>
+        </div>
+    
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="email">Cuerpo</label>  
+            <div class="col-md-4">
+            <input type="text" placeholder="Escribe algo... " class="form-control input-md" required="" #Cuerpo> 
+            </div>
+        </div>
+        
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <div class="col-md-8">
+            <button class="btn btn-success col-md-2 ">Enviar Ticket</button>
+            </div>
+        </div>
+    </form>
+</div>

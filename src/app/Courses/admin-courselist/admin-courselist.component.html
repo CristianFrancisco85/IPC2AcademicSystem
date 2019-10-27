@@ -11,6 +11,8 @@
                         <td>Seccion</td>
                         <td>Semestre</td>
                         <td>Año</td>
+                        <td>Hora de Inicio</td>
+                        <td>Hora de Fin </td>
                         <td> </td>
                         <td> </td>
                     </tr>
@@ -22,6 +24,8 @@
                         <td #Section>{{Course.Section}}</td>
                         <td #Semester>{{Course.Semester}}</td>
                         <td #Year>{{Course.YearAssign}}</td>
+                        <td>{{Course.BeginTime}}</td>
+                        <td>{{Course.EndTime}}</td>
                         <td><button class="btn btn-danger" id={{Course.IDCourse}} (click)="deleteCourseAssign(Button,Section,Semester,Year)" #Button>Eliminar</button></td>
                         <td><button class="btn btn-warning" id={{Course.IDCourse}} (click)="deleteCourseAssignAux(Button,Section,Semester,Year)" #Button>Desasignar Auxiliar</button></td>
                     </tr>
