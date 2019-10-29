@@ -1,35 +1,36 @@
 <div class="row">
-        <div class="panel panel-primary mx-auto">
-            <div class="panel-heading">
-                <h3 class="panel-title text-center">Secciones de Cursos Asignados</h3>
-            </div>
-            <table class="table">
-                <thead>
-                    <tr>               
-                        <td>ID</td>
-                        <td>Nombre de Curso</td>
-                        <td>Seccion</td>
-                        <td>Semestre</td>
-                        <td>Año</td>
-                        <td>Hora de Inicio</td>
-                        <td>Hora de Fin </td>
-                        <td> </td>
-                        <td> </td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor = "let Course of Cursos">               
-                        <td>{{Course.IDCourse}}</td>
-                        <td>{{Course.CourseName}}</td>
-                        <td #Section>{{Course.Section}}</td>
-                        <td #Semester>{{Course.Semester}}</td>
-                        <td #Year>{{Course.YearAssign}}</td>
-                        <td>{{Course.BeginTime}}</td>
-                        <td>{{Course.EndTime}}</td>
-                        <td><button class="btn btn-danger" id={{Course.IDCourse}} (click)="deleteCourseAssign(Button,Section,Semester,Year)" #Button>Eliminar</button></td>
-                        <td><button class="btn btn-warning" id={{Course.IDCourse}} (click)="deleteCourseAssignAux(Button,Section,Semester,Year)" #Button>Desasignar Auxiliar</button></td>
-                    </tr>
-                </tbody>
-            </table>
+
+    <div class="panel panel-primary mx-auto">
+        <div class="panel-heading">
+            <h3 class="panel-title text-center">Secciones de Cursos Asignados</h3>
         </div>
+        <table class="table">
+            <thead>
+                <tr>               
+                    <td>ID</td>
+                    <td>Nombre de Curso</td>
+                    <td>Seccion</td>
+                    <td>Semestre</td>
+                    <td>Año</td>
+                    <td>Hora de Inicio</td>
+                    <td>Hora de Fin </td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let Course of Cursos">               
+                    <td>{{Course.IDCourse}}</td>
+                    <td>{{Course.CourseName}}</td>
+                    <td #Section>{{Course.Section}}</td>
+                    <td #Semester>{{Course.Semester}}</td>
+                    <td #Year>{{Course.YearAssign}}</td>
+                    <td>{{Course.BeginTime}}</td>
+                    <td>{{Course.EndTime}}</td>
+                    <td><button class="btn btn-danger" id={{Course.IDCourse}} (click)="deleteCourseAssign(Button,Section,Semester,Year)" #Button>Eliminar</button></td>
+                    <td><button class="btn btn-warning" id={{Course.IDCourse}} (click)="deleteCourseAssignAux(Button,Section,Semester,Year)" #Button>Desasignar Auxiliar</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+</div>

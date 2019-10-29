@@ -24,7 +24,7 @@ export class UserNewpublicationComponent implements OnInit {
     this.dataservice.newPublication(Titulo.value,Cuerpo.value,iduser,idcourse,section,semester,year).subscribe((result) =>{
         console.log(result);
         alert("Publicacion Realizada");
-        this.router.navigate(['user-module/user-courseflow/user-courseforum']);
+        this.router.navigate(['aux-module/aux-courseflow/aux-courseforum']);
     });
   }
 

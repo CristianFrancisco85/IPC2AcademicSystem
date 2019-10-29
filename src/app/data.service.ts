@@ -12,6 +12,8 @@ import { stringify } from '@angular/compiler/src/util';
 })
 export class DataService {
 
+  public Fecha:string;
+
   constructor(private http: HttpClient) { }
 
   //---USER
